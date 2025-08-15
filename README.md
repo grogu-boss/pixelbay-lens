@@ -14,7 +14,7 @@ A lightweight browser extension that provides instant access to market prices wi
 
 1. **Download the Extension**
 
-   - Download or clone the extension files to your computer
+   - Download from https://github.com/grogu-boss/pixelbay-lens/releases/tag/v1.0 
    - Extract the files to a folder (e.g., `pixelbay-lens-extension`)
 
 2. **Enable Developer Mode**
@@ -226,4 +226,5 @@ extension/
 **Pixelbay Lens v1.0** - Built with ❤️ for the Soulbound gaming community
 
 _This extension is an independent project and is not officially affiliated with Soulbound. All game data belongs to their respective owners._
+
 
