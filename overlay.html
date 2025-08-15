@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixelbay Lens</title>
+  </head>
+  <body>
+    <div id="soulbound-overlay" class="soulbound-overlay">
+      <!-- avatar shown when minimized -->
+      <img class="min-avatar" alt="Pixelbay Lens avatar" />
+
+      <div class="overlay-header">
+        <div class="header-title">
+          <img class="header-avatar" alt="Pixelbay Lens avatar" />
+          <h3>Pixelbay Lens</h3>
+        </div>
+        <div class="overlay-controls">
+          <button id="refresh-btn" class="refresh-btn" title="Refresh data">
+            ↻
+          </button>
+          <button id="toggle-btn" class="toggle-btn" title="Minimize/Maximize">
+            −
+          </button>
+          <button id="close-btn" class="close-btn" title="Close overlay">
+            ×
+          </button>
+        </div>
+      </div>
+
+      <div class="overlay-content" id="overlay-content">
+        <div class="item-selector">
+          <label for="item-search">Search Item:</label>
+          <div class="search-container">
+            <input
+              type="text"
+              id="item-search"
+              placeholder="Type to search for items..."
+              autocomplete="off"
+            />
+            <div
+              id="search-dropdown"
+              class="search-dropdown"
+              style="display: none"
+            >
+              <!-- filtered items will be populated here -->
+            </div>
+          </div>
+          <div class="current-selection">
+            <span class="selection-label">Selected:</span>
+            <span id="current-selection" class="selection-item"
+              >Moon Berry</span
+            >
+          </div>
+        </div>
+
+        <div class="price-display">
+          <div class="price-main">
+            <span class="price-label">Latest Price:</span>
+            <span id="current-price" class="current-price">Loading...</span>
+          </div>
+          <div class="price-change" id="price-change" style="display: none">
+            <span id="price-change-value" class="price-change-value"></span>
+          </div>
+          <div class="price-details" id="price-details" style="display: none">
+            <span class="price-detail"
+              >High: <span id="price-high">--</span></span
+            >
+            <span class="price-separator">|</span>
+            <span class="price-detail"
+              >Low: <span id="price-low">--</span></span
+            >
+          </div>
+          <div class="price-meta" id="price-meta" style="display: none">
+            <span class="price-detail" id="summary-line"
+              >Based on last -- data points from -- to --</span
+            >
+          </div>
+        </div>
+
+        <div
+          id="error-message"
+          class="error-message"
+          style="display: none"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

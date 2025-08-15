@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Pixelbay Lens",
+  "version": "1.0.0",
+  "description": "Pixelbay Lens – real-time market viewer for Soulbound's Pixelbay auction house",
+
+  "permissions": ["activeTab", "storage"],
+
+  "host_permissions": ["https://play.soulbound.game/*"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://play.soulbound.game/*"],
+      "js": ["content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["overlay.html", "assets/*"],
+      "matches": ["https://play.soulbound.game/*"]
+    }
+  ],
+
+  "action": {
+    "default_title": "Toggle Pixelbay Lens"
+  }
+}

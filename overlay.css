@@ -1,0 +1,407 @@
+/* pixelbay lens styles */
+.soulbound-overlay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 1px solid #4a5568;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #e2e8f0;
+  z-index: 2147483647;
+  backdrop-filter: blur(10px);
+  opacity: 0.95; /* slightly more transparent for better integration */
+  transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease,
+    opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; /* smooth minimize/expand transitions */
+  pointer-events: auto !important;
+  isolation: isolate;
+}
+
+/* minimized state - circular with initials and low opacity */
+.soulbound-overlay.minimized {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0.3;
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  border: 1px solid #63b3ed;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* default position for minimized state - only when not dragged and not being dragged */
+.soulbound-overlay.minimized:not(.dragged):not(.being-dragged) {
+  top: 60px !important;
+  bottom: auto !important;
+  right: 80px !important;
+  left: auto !important;
+}
+
+.soulbound-overlay.minimized:hover {
+  opacity: 0.6;
+  transform: scale(1.05);
+}
+
+.soulbound-overlay.minimized .overlay-content {
+  display: none;
+}
+
+.soulbound-overlay.minimized .overlay-header {
+  display: none !important;
+}
+
+/* explicit avatar elements */
+.soulbound-overlay .min-avatar {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.soulbound-overlay.minimized .min-avatar {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 12px !important;
+  background: linear-gradient(90deg, #4a5568 0%, #2d3748 100%) !important;
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: 1px solid #4a5568 !important;
+  cursor: move !important;
+  position: relative !important;
+  contain: layout style !important; /* isolate from parent layout changes */
+  will-change: auto !important; /* prevent unnecessary compositing */
+}
+
+/* moved out of the header block to avoid invalid nested css */
+.overlay-header .header-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 24px !important;
+  flex-shrink: 0 !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  contain: layout !important; /* isolate layout from external changes */
+  position: relative !important; /* establish own formatting context */
+}
+
+.overlay-header .header-avatar {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin: 0 !important; /* prevent margin collapse issues */
+  padding: 0 !important;
+
+  contain: layout !important; /* isolate from layout changes */
+}
+
+.overlay-header h3 {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #f7fafc !important;
+  line-height: 24px !important; /* explicit line-height matching container height */
+  height: 24px !important; /* force same height as avatar */
+  display: flex !important;
+  align-items: center !important; /* center text within its own container */
+  flex-shrink: 0 !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  white-space: nowrap !important; /* prevent text wrapping issues */
+}
+
+.overlay-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.overlay-controls button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.overlay-controls button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.close-btn:hover {
+  background: #f56565 !important;
+}
+
+.overlay-content {
+  padding: 16px;
+}
+
+.item-selector {
+  margin-bottom: 16px;
+}
+
+.item-selector label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #cbd5e0;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.item-selector input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  pointer-events: auto !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  z-index: 2147483647 !important;
+  position: relative;
+}
+
+.item-selector input:focus {
+  outline: none;
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.2);
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.search-dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid rgba(74, 85, 104, 0.3);
+}
+
+.search-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.search-dropdown-item:hover {
+  background: #4a5568;
+}
+
+.search-dropdown-item.selected {
+  background: #63b3ed;
+  color: #1a202c;
+}
+
+.search-dropdown-category {
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 12px;
+  background: #1a202c;
+  color: #a0aec0;
+  border-bottom: 1px solid rgba(74, 85, 104, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* scrollbar styling for dropdown */
+.search-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-dropdown::-webkit-scrollbar-track {
+  background: #1a202c;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 3px;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #63b3ed;
+}
+
+.current-selection {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: rgba(99, 179, 237, 0.1);
+  border: 1px solid rgba(99, 179, 237, 0.3);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.selection-label {
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.selection-item {
+  color: #63b3ed;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.price-display {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border: 1px solid #4a5568;
+  line-height: 1.4;
+}
+
+.price-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.price-label {
+  font-weight: 500;
+  color: #a0aec0;
+}
+
+.current-price {
+  font-weight: 600;
+  font-size: 16px;
+  color: #68d391;
+}
+
+.price-change {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.price-change-value {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.price-change-value.positive {
+  color: #4ade80;
+}
+
+.price-change-value.negative {
+  color: #f87171;
+}
+
+.price-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.price-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.price-meta #summary-line {
+  color: #a0aec0;
+}
+
+.price-detail {
+  color: #a0aec0;
+}
+
+.price-separator {
+  color: #4a5568;
+}
+
+.error-message {
+  background: #fed7d7;
+  color: #c53030;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #feb2b2;
+  font-size: 13px;
+}
+
+.refresh-btn {
+  animation: spin 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.refresh-btn.spinning {
+  animation-play-state: running;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* responsive adjustments */
+@media (max-width: 480px) {
+  .soulbound-overlay {
+    width: calc(100vw - 40px);
+    right: 20px;
+    left: 20px;
+  }
+}
+
+/* make sure overlay stays on top of game elements */
+.soulbound-overlay {
+  isolation: isolate;
+}
