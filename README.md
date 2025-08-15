@@ -10,7 +10,7 @@ A lightweight browser extension that provides instant access to market prices wi
 
 ### Chrome/Chromium Browser Installation
 
-#### Method 1: Manual Installation (Recommended)
+#### Manual Installation
 
 1. **Download the Extension**
 
@@ -34,9 +34,6 @@ A lightweight browser extension that provides instant access to market prices wi
    - The extension icon should appear in your browser toolbar
    - Status should show "Enabled"
 
-#### Method 2: Chrome Web Store (Future Release)
-
-_Coming soon - The extension will be available on the Chrome Web Store for one-click installation._
 
 ### Firefox Installation
 
@@ -168,7 +165,7 @@ After installation, the extension is ready to use immediately:
 - Game account details or character information
 - Any data transmission to third-party servers
 
-## 🛠️ Technical Details
+## Technical Details
 
 - **API Endpoint**: `/api/economy/amm/price_data`
 - **Data Source**: Official Soulbound game API (read-only)
@@ -229,3 +226,4 @@ extension/
 **Pixelbay Lens v1.0** - Built with ❤️ for the Soulbound gaming community
 
 _This extension is an independent project and is not officially affiliated with Soulbound. All game data belongs to their respective owners._
+
