@@ -4,7 +4,7 @@
 
 ![Pixelbay Lens Demo](assets/readme.gif)
 
-A lightweight browser extension that provides instant access to market prices with a sleek, draggable overlay interface. Perfect for traders, crafters, and players who need quick price information while playing Soulbound.
+A lightweight browser extension that provides instant access to market prices with a sleek, draggable overlay interface. Perfect for players who need quick price information while playing Soulbound.
 
 ## Installation
 
@@ -226,6 +226,7 @@ extension/
 **Pixelbay Lens v1.0** - Built with ❤️ for the Soulbound gaming community
 
 _This extension is an independent project and is not officially affiliated with Soulbound. All game data belongs to their respective owners._
+
 
 
 
